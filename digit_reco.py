@@ -33,8 +33,8 @@ tsne_df = pd.DataFrame(
     columns=["x", "y", "targets"]
 )
 
-tsne_df.loc[:, :targets] = tsne_df.targets.astype(int)
+tsne_df.loc[:, "targets"] = tsne_df.targets.astype(int)
 
-grid = sns.FaceGrid(tsn, hue ="targets", size=8)
+grid = sns.FacetGrid(tsne_df, hue ="targets", size=8)
 
 grid.map(plt.scatter, "x", "y").add_legend()
